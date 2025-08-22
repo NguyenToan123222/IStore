@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct IStoreApp: App {
+    @State var vm = AuthVM()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Group {
+                if false {
+                    Login()
+                } else {
+                    MainTabView()
+                }
+            }.environment(vm)
         }
     }
 }
