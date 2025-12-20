@@ -10,14 +10,25 @@ import SwiftUI
 @main
 struct IStoreApp: App {
     @State var vm = AuthVM()
+    @State var isLoading = true
+    @State var fetchProducts = FetchProduct()
+    
     var body: some Scene {
         WindowGroup {
             Group {
-                if false {
-                    Login()
-                } else {
+                if isLoading {
+                    ProgressView("Loading")
+                        .task {
+                            await vm.checkLoginStatus()
+                            isLoading = false
+                        }
+                } else if vm.isLogged {
                     MainTabView()
+                        .environment(fetchProducts)
+                } else {
+                    Login()
                 }
+                
             }.environment(vm)
         }
     }

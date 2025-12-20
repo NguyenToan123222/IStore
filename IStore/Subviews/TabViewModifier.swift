@@ -7,12 +7,18 @@
 
 import SwiftUI
 
-struct TabViewModifier: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct TabViewModifier: ViewModifier {
+    
+    var symbol: String
+    var tag: Int
+    
+    
+    func body(content: Content) -> some View {
+        content
+            .tabItem {
+                Image(systemName: symbol)
+            }
+            .tag(tag)
     }
 }
 
-#Preview {
-    TabViewModifier()
-}

@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @State private var selected = 1
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            Home().tabbarModifier(symbol: "house.cicle", tag: 1)
+            Cart().tabbarModifier(symbol: "house.cicle", tag: 2)
+            Favourites().tabbarModifier(symbol: "house.cicle", tag: 3)
+            Personal().tabbarModifier(symbol: "house.cicle", tag: 4)
+
+        }
     }
 }
 

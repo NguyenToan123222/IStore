@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct TabButtonView: View {
+    var type: ItemCategories
+    var action: () -> Void
+    var isSelected: Bool
+    var color: Color
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: action) {
+            Image(systemName: type.rawValue)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .foregroundStyle(isSelected ? color : Color.gray.opacity(0.5))
+                .frame(height: 35)
+        }
     }
 }
 
-#Preview {
-    TabButtonView()
-}
