@@ -1,30 +1,30 @@
-# IStore
-App Ecommerce
-iStore – Ứng dụng mua sắm thiết bị Apple trên iOS
-iStore là ứng dụng e-commerce native iOS chuyên bán các sản phẩm Apple chính hãng (iPhone, iPad, MacBook, Apple Watch, AirPods). Dự án được phát triển trong kỳ thực tập tốt nghiệp tại Công ty Cổ phần Ecomobi Media (khối Tech & Product) năm 2025.
-Ứng dụng sử dụng công nghệ hiện đại:
+# iStore – Ứng dụng mua sắm thiết bị Apple trên iOS
 
-Frontend: SwiftUI + MVVM + SwiftData (iOS 18)
-Backend: Node.js + Express + MongoDB + Mongoose
-Authentication: JWT + bcrypt + nodemailer (email verification)
-Payment: Stripe (sandbox mode)
-Image storage: AppWrite
-Affiliate tracking: Increment views để hỗ trợ tính commission cho KOLs
+**iStore** là ứng dụng e-commerce native iOS chuyên bán các sản phẩm Apple chính hãng (iPhone, iPad, MacBook, Apple Watch, AirPods). Dự án được phát triển trong kỳ thực tập tốt nghiệp tại **Công ty Cổ phần Ecomobi Media** (khối Tech & Product) năm 2025.
 
-Tính năng chính
+Ứng dụng tích hợp mô hình affiliate tracking để hỗ trợ tính commission cho KOLs dựa trên lượt xem sản phẩm.
 
-Đăng ký / Đăng nhập / Quên mật khẩu (OTP email)
-Danh mục sản phẩm với pagination & trending (sắp xếp theo lượt xem)
-Chi tiết sản phẩm với zoom animation iOS 18
-Tìm kiếm & lọc nâng cao (tên, giá, danh mục)
-Giỏ hàng offline (SwiftData persistence)
-Thanh toán an toàn qua Stripe
-Admin panel: CRUD sản phẩm, upload ảnh
-Reviews & Ratings (hệ thống sao, tính trung bình)
-Bảo mật: Keychain, HTTP-only cookie, role-based access
+## Công nghệ sử dụng
+- **Frontend**: SwiftUI + MVVM + SwiftData (iOS 18)
+- **Backend**: Node.js + Express + MongoDB + Mongoose
+- **Authentication**: JWT + bcrypt + nodemailer (email verification)
+- **Payment**: Stripe (sandbox mode)
+- **Image storage**: AppWrite
+- **Affiliate tracking**: Increment views để tính commission
 
-Cấu trúc thư mục
-textiStore/
+## Tính năng chính
+- Đăng ký / Đăng nhập / Quên mật khẩu (gửi OTP qua email)
+- Danh mục sản phẩm với pagination & trending (sắp xếp theo lượt xem)
+- Chi tiết sản phẩm với zoom animation iOS 18
+- Tìm kiếm & lọc nâng cao (tên, giá, danh mục)
+- Giỏ hàng offline (SwiftData persistence)
+- Thanh toán an toàn qua Stripe
+- Admin panel: CRUD sản phẩm + upload ảnh
+- Reviews & Ratings (hệ thống sao + tính điểm trung bình)
+- Bảo mật: Keychain, HTTP-only cookie, role-based access
+
+## Cấu trúc thư mục
+iStore/
 ├── iStoreApp/                  # Frontend SwiftUI
 │   ├── Views/                  # Các màn hình UI
 │   ├── ViewModels/             # Logic MVVM
@@ -40,37 +40,38 @@ textiStore/
 │   └── config/                 # Env, database connection
 │
 └── README.md
-Hướng dẫn cài đặt và chạy dự án
-Yêu cầu hệ thống
+text## Hướng dẫn cài đặt và chạy dự án
 
-macOS Ventura trở lên
-Xcode 16+ (iOS 18 SDK)
-Node.js v18+
-MongoDB (local hoặc MongoDB Atlas)
-Tài khoản Stripe sandbox (test card: 4242 4242 4242 4242)
-Tài khoản AppWrite (cho upload ảnh)
+### Yêu cầu hệ thống
+- macOS Ventura trở lên
+- Xcode 16+ (iOS 18 SDK)
+- Node.js v18+
+- MongoDB (local hoặc MongoDB Atlas)
+- Tài khoản Stripe sandbox (test card: `4242 4242 4242 4242`)
+- Tài khoản AppWrite (cho upload ảnh)
 
-1. Clone repository
-Bashgit clone https://github.com/[username-của-bạn]/iStore-ios-app.git
+### 1. Clone repository
+```bash
+git clone https://github.com/[username-của-bạn]/iStore-ios-app.git
 cd iStore-ios-app
 2. Chạy Backend
 Bashcd backend
 npm install
 cp .env.example .env
-# Chỉnh sửa .env: MONGO_URI, JWT_SECRET, GMAIL_APP_PASSWORD, STRIPE_SECRET_KEY
+# Chỉnh sửa .env với MONGO_URI, JWT_SECRET, GMAIL_APP_PASSWORD, STRIPE_SECRET_KEY
 npm run dev
-Backend chạy tại: http://localhost:5000
+→ Backend chạy tại: http://localhost:5000
 3. Chạy Frontend (iOS App)
 
 Mở file iStoreApp.xcodeproj bằng Xcode
-Chọn simulator (iPhone 15/16 khuyến nghị)
+Chọn simulator (khuyến nghị iPhone 15/16)
 Chỉnh API base URL trong Services/APIService.swift thành http://localhost:5000 (hoặc IP máy nếu chạy trên thiết bị thật)
 Build & Run (Cmd + R)
 
 4. Seed dữ liệu mẫu (tùy chọn)
 Bashcd backend
 node seed/products.js   # Seed 50 sản phẩm Apple
-node seed/users.js      # Seed admin user (email: admin@istore.com, pass: 123456)
+node seed/users.js      # Seed admin user
 Tài khoản test
 
 User thường: Đăng ký mới trong app
@@ -80,9 +81,15 @@ Password: 123456
 → Truy cập tab Admin để quản lý sản phẩm
 
 Screenshots
-(Bạn chèn ảnh thật từ video YouTube hoặc simulator ở đây – khuyến khích 4-6 ảnh: Login, Home, Product Detail, Cart, Admin Panel)
+Login Screen
+Home Screen
+Product Detail
+Cart Screen
+Admin Panel
+Search & Filter
+(Thêm các ảnh khác tương tự – bạn có thể chèn hết 20+ ảnh bạn gửi để README đầy đủ hơn)
 Commit history
-Dự án được phát triển theo Agile (sprint 2 tuần), commit theo conventional commits.
+Dự án được phát triển theo mô hình Agile (sprint 2 tuần), commit theo chuẩn conventional commits.
 Liên hệ
 Nguyễn Phúc Toàn
 Email: nguyenphuctoan25102004@gmail.com
